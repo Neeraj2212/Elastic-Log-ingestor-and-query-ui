@@ -39,7 +39,15 @@ class App {
     return this.app;
   }
 
-  private connectToDatabase() {}
+  private async connectToDatabase() {
+    try {
+      const resp = await db.ping();
+      if (resp) console.log('Elasticsearch cluster is up!');
+      else console.log('Elasticsearch cluster is down!');
+    } catch (error) {
+      console.log(JSON.stringify(error, null, 2));
+    }
+  }
 
   private initializeMiddlewares() {
     this.app.use(morgan(LOG_FORMAT));

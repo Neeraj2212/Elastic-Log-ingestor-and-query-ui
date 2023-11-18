@@ -1,5 +1,5 @@
 import { CREDENTIALS, LOG_FORMAT, NODE_ENV, PORT } from '@config';
-import { db } from '@databases';
+import { db, setupIngestRenamePipeline, setupLifeCyclePolicy, setupLogIndexTemplate } from '@databases';
 import { Routes } from '@interfaces/routes.interface';
 import errorMiddleware from '@middlewares/error.middleware';
 import compression from 'compression';
@@ -20,7 +20,7 @@ class App {
     this.env = NODE_ENV || 'development';
     this.port = PORT || 3000;
 
-    this.connectToDatabase();
+    this.connectToDatabaseAndInitialSetup();
     this.initializeMiddlewares();
     this.initializeRoutes(routes);
     this.initializeErrorHandling();
@@ -39,14 +39,22 @@ class App {
     return this.app;
   }
 
-  private async connectToDatabase() {
+  private async connectToDatabaseAndInitialSetup() {
     try {
       const resp = await db.ping();
-      if (resp) console.log('Elasticsearch cluster is up!');
-      else console.log('Elasticsearch cluster is down!');
+      if (resp) {
+        console.log('Elasticsearch cluster is up!');
+        this.setupInitialIndexes();
+      } else console.log('Elasticsearch cluster is down!');
     } catch (error) {
       console.log(JSON.stringify(error, null, 2));
     }
+  }
+
+  private async setupInitialIndexes() {
+    await setupLifeCyclePolicy();
+    await setupLogIndexTemplate();
+    await setupIngestRenamePipeline();
   }
 
   private initializeMiddlewares() {

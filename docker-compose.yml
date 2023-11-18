@@ -1,6 +1,30 @@
 version: "2.2"
 
 services:
+  ingestor_server:
+    build:
+      context: ./server
+      target: development-build-stage
+      dockerfile: Dockerfile
+    container_name: ingestor_server
+    ports:
+      - "3000:3000"
+    environment:
+      - ELASTIC_URL=http://es01:9200
+      - ELASTIC_USERNAME=elastic
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - PORT=3000
+      - LOG_FORMAT=combined
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    restart: "always"
+    depends_on:
+      es_service_1:
+        condition: service_healthy
+    networks:
+      - elastic_network
+
   es_service_1:
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
     container_name: es01
@@ -27,7 +51,7 @@ services:
       test: curl --silent --fail localhost:9200/_cluster/health || exit 1
       interval: 30s
       timeout: 30s
-      retries: 3
+      retries: 10
 
   es_service_2:
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
@@ -53,7 +77,7 @@ services:
       test: curl --silent --fail localhost:9200/_cluster/health || exit 1
       interval: 30s
       timeout: 30s
-      retries: 3
+      retries: 10
 
   es_service_3:
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
@@ -78,7 +102,7 @@ services:
       test: curl --silent --fail localhost:9200/_cluster/health || exit 1
       interval: 30s
       timeout: 30s
-      retries: 3
+      retries: 10
 
   kibana:
     image: docker.elastic.co/kibana/kibana:${STACK_VERSION}

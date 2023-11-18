@@ -143,8 +143,8 @@ export const setupIngestRenamePipeline = async () => {
         processors: [
           {
             rename: {
-              field: '@timestamp',
-              target_field: 'timestamp',
+              field: 'timestamp',
+              target_field: '@timestamp',
             },
           },
         ],

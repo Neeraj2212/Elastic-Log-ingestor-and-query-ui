@@ -14,11 +14,11 @@ services:
       - ELASTIC_USERNAME=elastic
       - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
       - PORT=3000
-      - LOG_FORMAT=combined
+      - LOG_FORMAT=tiny
     volumes:
       - ./server:/app
       - /app/node_modules
-    restart: "always"
+    restart: "unless-stopped"
     depends_on:
       es_service_1:
         condition: service_healthy

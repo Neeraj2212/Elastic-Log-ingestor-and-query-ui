@@ -157,6 +157,6 @@ The Query Interface is a web application that allows users to filter logs and vi
 ### 4.2 Deployed Services
 Docker Compose is used to deploy the system. It contains the following services:
 - **Log Ingestor**: The Log Ingestor is deployed as a Node.js application in a docker container. It is exposed on port `3000`.
-- **Query Interface**: The Query Interface is deployed as a React.js application in a docker container. 
+- **Query Interface**: The Query Interface is deployed as a React.js application in a docker container. It is exposed on port `5000`.
 - **Elastic Search**: Elastic Search is deployed as a docker container. It is exposed on port `9200`.
 - **Kibana**: Kibana is deployed as a docker container. It is exposed on port `5601`. It is used to view the logs in the database. It is not used in the system.

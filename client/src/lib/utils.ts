@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function isValidTimestamp(_timestamp: string) {
-  const newTimestamp = new Date(_timestamp).getTime();
+  const newTimestamp = new Date(_timestamp.trim()).getTime();
   return isNumeric(newTimestamp);
 }
 

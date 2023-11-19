@@ -1,15 +1,22 @@
 import { isValidTimestamp } from "@/lib/utils";
-import { QueryFilterObject } from "@/types";
+import { QueryFilterObject, TableRowData } from "@/types";
 import axios from "axios";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { Checkbox } from "./ui/checkbox";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { useToast } from "./ui/use-toast";
+import { ResetIcon } from "@radix-ui/react-icons";
 
-export default function Filters() {
-  const [filters, setFilters] = useState({
+export default function Filters({
+  setLogData,
+  fetchRecentLogs,
+}: {
+  setLogData: React.Dispatch<React.SetStateAction<TableRowData[]>>;
+  fetchRecentLogs: () => void;
+}) {
+  const initialState = {
     level: "",
     message: "",
     resourceId: "",
@@ -22,7 +29,8 @@ export default function Filters() {
       timestampGte: "",
       timestampLte: "",
     },
-  });
+  };
+  const [filters, setFilters] = useState(initialState);
 
   const { toast } = useToast();
 
@@ -78,17 +86,17 @@ export default function Filters() {
     }
 
     const queryObject: QueryFilterObject = {
-      level: filters.level,
-      message: filters.message,
-      resourceId: filters.resourceId,
-      traceId: filters.traceId,
-      spanId: filters.spanId,
-      commit: filters.commit,
-      parentResourceId: filters.parentResourceId,
+      level: filters.level.trim(),
+      message: filters.message.trim(),
+      resourceId: filters.resourceId.trim(),
+      traceId: filters.traceId.trim(),
+      spanId: filters.spanId.trim(),
+      commit: filters.commit.trim(),
+      parentResourceId: filters.parentResourceId.trim(),
     };
 
     if (!isTimeRange && filters.timestamp)
-      queryObject.timestamp = filters.timestamp;
+      queryObject.timestamp = filters.timestamp.trim();
 
     if (isTimeRange) {
       queryObject.timeRange = {};
@@ -104,14 +112,25 @@ export default function Filters() {
         destructiveToast(err.response.data.message);
       });
 
-    if (response?.data) console.log(response.data.data);
+    if (response?.data) setLogData(response.data.data);
   };
 
   return (
-    <div className="bg-secondary px-10 py-10 h-full overflow-y-auto">
-      <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-        Log Filters
-      </h2>
+    <div className="bg-secondary px-10 py-10 h-screen overflow-y-auto">
+      <div className="flex justify-between">
+        <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+          Log Filters
+        </h2>
+        <Button
+          className="flex space-x-2"
+          onClick={() => {
+            setFilters(initialState);
+            fetchRecentLogs();
+          }}
+        >
+          <ResetIcon /> <p> Reset</p>
+        </Button>
+      </div>
       <div className="pt-5">
         <form className="grid gap-y-3" onSubmit={handleSubmit}>
           <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -141,6 +160,9 @@ export default function Filters() {
               onChange={handleChange}
               placeholder="message"
             />
+            <p className="text-xs text-muted-foreground">
+              Message supports full text search
+            </p>
           </div>
           <div className="grid w-full max-w-sm items-center gap-1.5">
             <Label htmlFor="resourceId" className="font-semibold">

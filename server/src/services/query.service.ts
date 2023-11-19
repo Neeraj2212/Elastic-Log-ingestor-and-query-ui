@@ -32,12 +32,19 @@ class QueryService {
     if (filterQuery.timeRange && (filterQuery.timeRange.timestampGte || filterQuery.timeRange.timestampLte)) {
       must.push(this.rangeQuery('@timestamp', filterQuery.timeRange.timestampGte, filterQuery.timeRange.timestampLte));
     }
-    if (must.length === 0) return [];
+    if (must.length === 0) return this.getRecentLogs();
     const query = must.length === 1 ? must[0] : this.boolQuery(must);
 
     const filteredLogs = await db.search({
       index: LOG_ALIAS,
       query,
+      sort: [
+        {
+          '@timestamp': {
+            order: 'desc',
+          },
+        },
+      ],
     });
 
     return filteredLogs.hits.hits.map((log: any) => log._source);

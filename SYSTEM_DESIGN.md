@@ -10,7 +10,7 @@ The system encompasses the development of two main components: the log ingestor 
 
 ## 2. System Overview
 ### 2.1 System Architecture
-![System Architecture](./assets/system-architecture.png)
+![System Architecture](./images/system-architecture.png)
 
 The system follows a microservices architecture, comprising the Log Ingestor and the Query Interface. These components interact through well-defined APIs.
 
@@ -117,7 +117,6 @@ Postman Collection is provided in a JSON file at the root of the project.
     "metadata": {
         "parentResourceId": "keyword"
     }
-
 }
 ```
 
@@ -146,7 +145,7 @@ The Query Interface is a web application that allows users to filter logs and vi
 - Full text search filter: `message`
 
 ### 3.2.3 User Interface
-![Query Interface](./assets/query-interface.png)
+![Query Interface](./images/query-interface.png)
 
 
 ## 4. Deployment

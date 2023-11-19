@@ -1,0 +1,43 @@
+version: "2.2"
+
+services:
+  query_interface_prod:
+    build:
+      context: ./client
+      target: production-build-stage
+      dockerfile: Dockerfile
+    container_name: query_interface_prod
+    ports:
+      - 5000:5000
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    restart: "unless-stopped"
+    depends_on:
+      - ingestor_server_prod
+    networks:
+      - elastic_network
+
+  ingestor_server_prod:
+    build:
+      context: ./server
+      target: production-build-stage
+      dockerfile: Dockerfile
+    container_name: ingestor_server_prod
+    ports:
+      - 3000:3000
+    environment:
+      - ELASTIC_URL=http://es01:9200
+      - ELASTIC_USERNAME=elastic
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - PORT=3000
+      - LOG_FORMAT=tiny
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    restart: "unless-stopped"
+    depends_on:
+      es_service_1:
+        condition: service_healthy
+    networks:
+      - elastic_network

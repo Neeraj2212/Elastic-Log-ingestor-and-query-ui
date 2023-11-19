@@ -1,5 +1,32 @@
 # System Design Document: Log Ingestor and Query Interface
 
+## Table of Contents
+- [System Design Document: Log Ingestor and Query Interface](#system-design-document-log-ingestor-and-query-interface)
+  - [Table of Contents](#table-of-contents)
+  - [1. Introduction](#1-introduction)
+    - [1.1 Purpose of the Document](#11-purpose-of-the-document)
+    - [1.2 Scope of the Document](#12-scope-of-the-document)
+  - [2. System Overview](#2-system-overview)
+    - [2.1 System Architecture](#21-system-architecture)
+    - [2.2 System Components](#22-system-components)
+    - [2.3 Technologies Used](#23-technologies-used)
+  - [3.1 Log Ingestor](#31-log-ingestor)
+    - [3.1.1 Overview](#311-overview)
+    - [3.1.2 API documentation](#312-api-documentation)
+    - [3.1.3 API Endpoints](#313-api-endpoints)
+    - [3.1.4 Ingestion Process](#314-ingestion-process)
+    - [3.1.5 Querying Process](#315-querying-process)
+    - [3.1.6 Database Schema](#316-database-schema)
+    - [3.1.7 Scalability](#317-scalability)
+  - [3.2 Query Interface](#32-query-interface)
+    - [3.2.1 Overview](#321-overview)
+    - [3.2.2 Available Filters](#322-available-filters)
+    - [3.2.3 User Interface](#323-user-interface)
+  - [4. Deployment](#4-deployment)
+    - [4.1 Prerequisites](#41-prerequisites)
+    - [4.2 Deployed Services](#42-deployed-services)
+  - [5. References](#5-references)
+
 ## 1. Introduction
 
 ### 1.1 Purpose of the Document
@@ -30,7 +57,9 @@ The system follows a microservices architecture, comprising the Log Ingestor and
 The Log ingestor contains RESTful API endpoints that allow users to send and query log data from the Elastic Search database
 
 ### 3.1.2 API documentation
-Postman Collection is provided in a JSON file at the root of the project.
+Check the postman collection for API documentation [here](https://documenter.getpostman.com/view/16239037/2s9Ye8faZF)
+
+To run the postman collection, download the collection from [here](./postman_collection.json) and import it in postman.
 
 ### 3.1.3 API Endpoints
 
@@ -159,3 +188,9 @@ Docker Compose is used to deploy the system. It contains the following services:
 - **Query Interface**: The Query Interface is deployed as a React.js application in a docker container. It is exposed on port `5000`.
 - **Elastic Search**: Elastic Search is deployed as a docker container. It is exposed on port `9200`.
 - **Kibana**: Kibana is deployed as a docker container. It is exposed on port `5601`. It is used to view the logs in the database. It is not used in the system.
+
+## 5. References
+- [Elastic Search](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html)
+- [Elastic Search Data Streams](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams.html)
+- [Elastic Search Ingest Pipelines](https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html)
+- [Elastic Search Index Lifecycle Management](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-lifecycle-management.html)

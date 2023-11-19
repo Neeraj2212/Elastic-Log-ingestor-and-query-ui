@@ -1,0 +1,2237 @@
+{
+	"info": {
+		"_postman_id": "996e3d19-4d98-46e7-8583-c2ceaac1a078",
+		"name": "Log ingestor project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16239037"
+	},
+	"item": [
+		{
+			"name": "Ingest APIs",
+			"item": [
+				{
+					"name": "ingest single log",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"level\": \"error\",\n\t\"message\": \"Failed to connect to DB\",\n    \"resourceId\": \"server-1234\",\n\t\"timestamp\": \"2023-09-15T08:00:00Z\",\n\t\"traceId\": \"abc-xyz-123\",\n    \"spanId\": \"span-456\",\n    \"commit\": \"5e5342f\",\n    \"metadata\": {\n        \"parentResourceId\": \"server-0987\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/ingest",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"ingest"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"level\": \"error\",\n\t\"message\": \"Failed to connect to DB\",\n    \"resourceId\": \"server-1234\",\n\t\"timestamp\": \"2023-09-15T08:00:00Z\",\n\t\"traceId\": \"abc-xyz-123\",\n    \"spanId\": \"span-456\",\n    \"commit\": \"5e5342f\",\n    \"metadata\": {\n        \"parentResourceId\": \"server-0987\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/ingest",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"ingest"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"23-mKzLlC4hh1abfTOG3LF12U6ELmM\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 18 Nov 2023 18:44:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully ingested\"\n}"
+						}
+					]
+				},
+				{
+					"name": "ingest logs in bulk",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"level\": \"info\",\n    \"message\": \"aute excepteur laboris eiusmod laboris\",\n    \"resourceId\": \"server-5955\",\n    \"spanId\": \"span-4942\",\n    \"commit\": \"1c8568f\",\n    \"traceId\": \"abc-vwx-463\",\n    \"timestamp\": \"2017-05-14T07:30:44Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-4204\"\n    }\n  },\n  {\n    \"level\": \"info\",\n    \"message\": \"velit labore eu anim pariatur\",\n    \"resourceId\": \"server-3843\",\n    \"spanId\": \"span-9765\",\n    \"commit\": \"3d6615b\",\n    \"traceId\": \"def-vwx-526\",\n    \"timestamp\": \"2019-08-27T05:40:13Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-6011\"\n    }\n  },\n  {\n    \"level\": \"info\",\n    \"message\": \"nulla ad est laborum aliqua\",\n    \"resourceId\": \"server-6632\",\n    \"spanId\": \"span-6189\",\n    \"commit\": \"2a8022c\",\n    \"traceId\": \"jkl-stu-276\",\n    \"timestamp\": \"2019-06-08T04:01:53Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-1587\"\n    }\n  },\n  {\n    \"level\": \"error\",\n    \"message\": \"magna adipisicing id ad nostrud\",\n    \"resourceId\": \"server-8519\",\n    \"spanId\": \"span-9455\",\n    \"commit\": \"9d9238e\",\n    \"traceId\": \"def-vwx-429\",\n    \"timestamp\": \"2015-03-30T06:47:41Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-7034\"\n    }\n  },\n  {\n    \"level\": \"warn\",\n    \"message\": \"excepteur mollit reprehenderit sunt Lorem\",\n    \"resourceId\": \"server-9424\",\n    \"spanId\": \"span-1525\",\n    \"commit\": \"5f9075e\",\n    \"traceId\": \"jkl-stu-132\",\n    \"timestamp\": \"2014-04-12T08:58:14Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-2176\"\n    }\n  },\n  {\n    \"level\": \"error\",\n    \"message\": \"et proident amet Lorem ex\",\n    \"resourceId\": \"server-7580\",\n    \"spanId\": \"span-3538\",\n    \"commit\": \"7a4471b\",\n    \"traceId\": \"ghi-pqr-129\",\n    \"timestamp\": \"2014-01-19T01:23:20Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-1744\"\n    }\n  },\n  {\n    \"level\": \"warn\",\n    \"message\": \"occaecat magna anim commodo sunt\",\n    \"resourceId\": \"server-1459\",\n    \"spanId\": \"span-3134\",\n    \"commit\": \"7d4215e\",\n    \"traceId\": \"ghi-xyz-809\",\n    \"timestamp\": \"2021-10-24T01:10:07Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-5526\"\n    }\n  },\n  {\n    \"level\": \"info\",\n    \"message\": \"consequat laboris non commodo enim\",\n    \"resourceId\": \"server-2010\",\n    \"spanId\": \"span-8394\",\n    \"commit\": \"9d7570b\",\n    \"traceId\": \"ghi-xyz-966\",\n    \"timestamp\": \"2018-06-11T01:32:03Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-9224\"\n    }\n  },\n  {\n    \"level\": \"info\",\n    \"message\": \"culpa duis laborum amet mollit\",\n    \"resourceId\": \"server-9171\",\n    \"spanId\": \"span-3201\",\n    \"commit\": \"5f5500e\",\n    \"traceId\": \"jkl-xyz-646\",\n    \"timestamp\": \"2017-05-04T07:52:30Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-2403\"\n    }\n  },\n  {\n    \"level\": \"error\",\n    \"message\": \"cillum anim aliqua adipisicing proident\",\n    \"resourceId\": \"server-4097\",\n    \"spanId\": \"span-6986\",\n    \"commit\": \"9d4349b\",\n    \"traceId\": \"ghi-pqr-232\",\n    \"timestamp\": \"2014-07-02T09:14:26Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-5932\"\n    }\n  },\n  {\n    \"level\": \"info\",\n    \"message\": \"dolor exercitation veniam culpa est\",\n    \"resourceId\": \"server-3941\",\n    \"spanId\": \"span-3435\",\n    \"commit\": \"8b5472d\",\n    \"traceId\": \"ghi-pqr-864\",\n    \"timestamp\": \"2015-01-07T12:49:09Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-1311\"\n    }\n  },\n  {\n    \"level\": \"error\",\n    \"message\": \"ut ad deserunt tempor minim\",\n    \"resourceId\": \"server-5901\",\n    \"spanId\": \"span-6885\",\n    \"commit\": \"0f9227f\",\n    \"traceId\": \"abc-vwx-868\",\n    \"timestamp\": \"2021-10-01T10:22:27Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-4905\"\n    }\n  },\n  {\n    \"level\": \"info\",\n    \"message\": \"nulla nostrud irure aliquip enim\",\n    \"resourceId\": \"server-6269\",\n    \"spanId\": \"span-6805\",\n    \"commit\": \"2d1097f\",\n    \"traceId\": \"abc-pqr-211\",\n    \"timestamp\": \"2017-09-28T03:09:17Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-7832\"\n    }\n  },\n  {\n    \"level\": \"error\",\n    \"message\": \"fugiat et voluptate in esse\",\n    \"resourceId\": \"server-2213\",\n    \"spanId\": \"span-6772\",\n    \"commit\": \"6a4466e\",\n    \"traceId\": \"ghi-vwx-599\",\n    \"timestamp\": \"2018-08-15T01:45:42Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-5104\"\n    }\n  },\n  {\n    \"level\": \"error\",\n    \"message\": \"id excepteur commodo tempor irure\",\n    \"resourceId\": \"server-7879\",\n    \"spanId\": \"span-6441\",\n    \"commit\": \"7b5668c\",\n    \"traceId\": \"ghi-vwx-367\",\n    \"timestamp\": \"2020-06-27T03:52:20Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-5158\"\n    }\n  },\n  {\n    \"level\": \"error\",\n    \"message\": \"sint Lorem mollit veniam dolor\",\n    \"resourceId\": \"server-6932\",\n    \"spanId\": \"span-1611\",\n    \"commit\": \"1b4924d\",\n    \"traceId\": \"jkl-xyz-783\",\n    \"timestamp\": \"2023-06-17T09:39:05Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-4287\"\n    }\n  },\n  {\n    \"level\": \"info\",\n    \"message\": \"consequat sit aliqua ex nulla\",\n    \"resourceId\": \"server-5564\",\n    \"spanId\": \"span-5165\",\n    \"commit\": \"0e9799a\",\n    \"traceId\": \"ghi-stu-823\",\n    \"timestamp\": \"2021-09-23T03:09:07Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-7264\"\n    }\n  },\n  {\n    \"level\": \"error\",\n    \"message\": \"Lorem elit officia enim eu\",\n    \"resourceId\": \"server-8061\",\n    \"spanId\": \"span-4971\",\n    \"commit\": \"0e4107d\",\n    \"traceId\": \"def-xyz-661\",\n    \"timestamp\": \"2022-08-27T01:09:34Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-3904\"\n    }\n  },\n  {\n    \"level\": \"info\",\n    \"message\": \"incididunt voluptate pariatur sint nisi\",\n    \"resourceId\": \"server-5011\",\n    \"spanId\": \"span-4411\",\n    \"commit\": \"0e1590a\",\n    \"traceId\": \"jkl-xyz-720\",\n    \"timestamp\": \"2021-07-22T12:17:53Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-4617\"\n    }\n  },\n  {\n    \"level\": \"info\",\n    \"message\": \"incididunt do irure tempor aliquip\",\n    \"resourceId\": \"server-8200\",\n    \"spanId\": \"span-7637\",\n    \"commit\": \"9c7141c\",\n    \"traceId\": \"abc-vwx-457\",\n    \"timestamp\": \"2022-05-14T04:37:52Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-4439\"\n    }\n  },\n  {\n    \"level\": \"info\",\n    \"message\": \"magna sunt labore dolor excepteur\",\n    \"resourceId\": \"server-7430\",\n    \"spanId\": \"span-9673\",\n    \"commit\": \"6a6878e\",\n    \"traceId\": \"def-vwx-846\",\n    \"timestamp\": \"2021-11-17T06:36:37Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-5989\"\n    }\n  }\n]\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/ingest/bulk",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"ingest",
+								"bulk"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n  {\n    \"level\": \"info\",\n    \"message\": \"aute excepteur laboris eiusmod laboris\",\n    \"resourceId\": \"server-5955\",\n    \"spanId\": \"span-4942\",\n    \"commit\": \"1c8568f\",\n    \"traceId\": \"abc-vwx-463\",\n    \"timestamp\": \"2017-05-14T07:30:44Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-4204\"\n    }\n  },\n  {\n    \"level\": \"info\",\n    \"message\": \"velit labore eu anim pariatur\",\n    \"resourceId\": \"server-3843\",\n    \"spanId\": \"span-9765\",\n    \"commit\": \"3d6615b\",\n    \"traceId\": \"def-vwx-526\",\n    \"timestamp\": \"2019-08-27T05:40:13Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-6011\"\n    }\n  },\n  {\n    \"level\": \"info\",\n    \"message\": \"nulla ad est laborum aliqua\",\n    \"resourceId\": \"server-6632\",\n    \"spanId\": \"span-6189\",\n    \"commit\": \"2a8022c\",\n    \"traceId\": \"jkl-stu-276\",\n    \"timestamp\": \"2019-06-08T04:01:53Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-1587\"\n    }\n  },\n  {\n    \"level\": \"error\",\n    \"message\": \"magna adipisicing id ad nostrud\",\n    \"resourceId\": \"server-8519\",\n    \"spanId\": \"span-9455\",\n    \"commit\": \"9d9238e\",\n    \"traceId\": \"def-vwx-429\",\n    \"timestamp\": \"2015-03-30T06:47:41Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-7034\"\n    }\n  },\n  {\n    \"level\": \"warn\",\n    \"message\": \"excepteur mollit reprehenderit sunt Lorem\",\n    \"resourceId\": \"server-9424\",\n    \"spanId\": \"span-1525\",\n    \"commit\": \"5f9075e\",\n    \"traceId\": \"jkl-stu-132\",\n    \"timestamp\": \"2014-04-12T08:58:14Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-2176\"\n    }\n  },\n  {\n    \"level\": \"error\",\n    \"message\": \"et proident amet Lorem ex\",\n    \"resourceId\": \"server-7580\",\n    \"spanId\": \"span-3538\",\n    \"commit\": \"7a4471b\",\n    \"traceId\": \"ghi-pqr-129\",\n    \"timestamp\": \"2014-01-19T01:23:20Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-1744\"\n    }\n  },\n  {\n    \"level\": \"warn\",\n    \"message\": \"occaecat magna anim commodo sunt\",\n    \"resourceId\": \"server-1459\",\n    \"spanId\": \"span-3134\",\n    \"commit\": \"7d4215e\",\n    \"traceId\": \"ghi-xyz-809\",\n    \"timestamp\": \"2021-10-24T01:10:07Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-5526\"\n    }\n  },\n  {\n    \"level\": \"info\",\n    \"message\": \"consequat laboris non commodo enim\",\n    \"resourceId\": \"server-2010\",\n    \"spanId\": \"span-8394\",\n    \"commit\": \"9d7570b\",\n    \"traceId\": \"ghi-xyz-966\",\n    \"timestamp\": \"2018-06-11T01:32:03Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-9224\"\n    }\n  },\n  {\n    \"level\": \"info\",\n    \"message\": \"culpa duis laborum amet mollit\",\n    \"resourceId\": \"server-9171\",\n    \"spanId\": \"span-3201\",\n    \"commit\": \"5f5500e\",\n    \"traceId\": \"jkl-xyz-646\",\n    \"timestamp\": \"2017-05-04T07:52:30Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-2403\"\n    }\n  },\n  {\n    \"level\": \"error\",\n    \"message\": \"cillum anim aliqua adipisicing proident\",\n    \"resourceId\": \"server-4097\",\n    \"spanId\": \"span-6986\",\n    \"commit\": \"9d4349b\",\n    \"traceId\": \"ghi-pqr-232\",\n    \"timestamp\": \"2014-07-02T09:14:26Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-5932\"\n    }\n  },\n  {\n    \"level\": \"info\",\n    \"message\": \"dolor exercitation veniam culpa est\",\n    \"resourceId\": \"server-3941\",\n    \"spanId\": \"span-3435\",\n    \"commit\": \"8b5472d\",\n    \"traceId\": \"ghi-pqr-864\",\n    \"timestamp\": \"2015-01-07T12:49:09Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-1311\"\n    }\n  },\n  {\n    \"level\": \"error\",\n    \"message\": \"ut ad deserunt tempor minim\",\n    \"resourceId\": \"server-5901\",\n    \"spanId\": \"span-6885\",\n    \"commit\": \"0f9227f\",\n    \"traceId\": \"abc-vwx-868\",\n    \"timestamp\": \"2021-10-01T10:22:27Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-4905\"\n    }\n  },\n  {\n    \"level\": \"info\",\n    \"message\": \"nulla nostrud irure aliquip enim\",\n    \"resourceId\": \"server-6269\",\n    \"spanId\": \"span-6805\",\n    \"commit\": \"2d1097f\",\n    \"traceId\": \"abc-pqr-211\",\n    \"timestamp\": \"2017-09-28T03:09:17Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-7832\"\n    }\n  },\n  {\n    \"level\": \"error\",\n    \"message\": \"fugiat et voluptate in esse\",\n    \"resourceId\": \"server-2213\",\n    \"spanId\": \"span-6772\",\n    \"commit\": \"6a4466e\",\n    \"traceId\": \"ghi-vwx-599\",\n    \"timestamp\": \"2018-08-15T01:45:42Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-5104\"\n    }\n  },\n  {\n    \"level\": \"error\",\n    \"message\": \"id excepteur commodo tempor irure\",\n    \"resourceId\": \"server-7879\",\n    \"spanId\": \"span-6441\",\n    \"commit\": \"7b5668c\",\n    \"traceId\": \"ghi-vwx-367\",\n    \"timestamp\": \"2020-06-27T03:52:20Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-5158\"\n    }\n  },\n  {\n    \"level\": \"error\",\n    \"message\": \"sint Lorem mollit veniam dolor\",\n    \"resourceId\": \"server-6932\",\n    \"spanId\": \"span-1611\",\n    \"commit\": \"1b4924d\",\n    \"traceId\": \"jkl-xyz-783\",\n    \"timestamp\": \"2023-06-17T09:39:05Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-4287\"\n    }\n  },\n  {\n    \"level\": \"info\",\n    \"message\": \"consequat sit aliqua ex nulla\",\n    \"resourceId\": \"server-5564\",\n    \"spanId\": \"span-5165\",\n    \"commit\": \"0e9799a\",\n    \"traceId\": \"ghi-stu-823\",\n    \"timestamp\": \"2021-09-23T03:09:07Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-7264\"\n    }\n  },\n  {\n    \"level\": \"error\",\n    \"message\": \"Lorem elit officia enim eu\",\n    \"resourceId\": \"server-8061\",\n    \"spanId\": \"span-4971\",\n    \"commit\": \"0e4107d\",\n    \"traceId\": \"def-xyz-661\",\n    \"timestamp\": \"2022-08-27T01:09:34Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-3904\"\n    }\n  },\n  {\n    \"level\": \"info\",\n    \"message\": \"incididunt voluptate pariatur sint nisi\",\n    \"resourceId\": \"server-5011\",\n    \"spanId\": \"span-4411\",\n    \"commit\": \"0e1590a\",\n    \"traceId\": \"jkl-xyz-720\",\n    \"timestamp\": \"2021-07-22T12:17:53Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-4617\"\n    }\n  },\n  {\n    \"level\": \"info\",\n    \"message\": \"incididunt do irure tempor aliquip\",\n    \"resourceId\": \"server-8200\",\n    \"spanId\": \"span-7637\",\n    \"commit\": \"9c7141c\",\n    \"traceId\": \"abc-vwx-457\",\n    \"timestamp\": \"2022-05-14T04:37:52Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-4439\"\n    }\n  },\n  {\n    \"level\": \"info\",\n    \"message\": \"magna sunt labore dolor excepteur\",\n    \"resourceId\": \"server-7430\",\n    \"spanId\": \"span-9673\",\n    \"commit\": \"6a6878e\",\n    \"traceId\": \"def-vwx-846\",\n    \"timestamp\": \"2021-11-17T06:36:37Z\",\n    \"metadata\": {\n      \"parentResourceId\": \"server-5989\"\n    }\n  }\n]\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/ingest/bulk",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"ingest",
+										"bulk"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "147"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"93-zcVO72LaaYFEspy/4OSmnQRJ+4A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 05:22:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"total\": 21,\n        \"failed\": 0,\n        \"retry\": 0,\n        \"successful\": 21,\n        \"noop\": 0,\n        \"time\": 2850,\n        \"bytes\": 5572,\n        \"aborted\": false\n    },\n    \"message\": \"successfully ingested logs\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Query Logs",
+			"item": [
+				{
+					"name": "Get Recent Logs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/api/logs",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"logs"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{HOST}}/api/logs",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"logs"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1469-E7TkEzQyleL6/a787bf/rE+J7UU\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 05:23:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"traceId\": \"abc-xyz-123\",\n            \"spanId\": \"span-456\",\n            \"resourceId\": \"server-1234\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-0987\"\n            },\n            \"@timestamp\": \"2023-09-15T08:00:00Z\",\n            \"level\": \"error\",\n            \"commit\": \"5e5342f\",\n            \"message\": \"Failed to connect to DB\"\n        },\n        {\n            \"spanId\": \"span-1611\",\n            \"traceId\": \"jkl-xyz-783\",\n            \"resourceId\": \"server-6932\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-4287\"\n            },\n            \"@timestamp\": \"2023-06-17T09:39:05Z\",\n            \"level\": \"error\",\n            \"commit\": \"1b4924d\",\n            \"message\": \"sint Lorem mollit veniam dolor\"\n        },\n        {\n            \"spanId\": \"span-4971\",\n            \"traceId\": \"def-xyz-661\",\n            \"resourceId\": \"server-8061\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-3904\"\n            },\n            \"@timestamp\": \"2022-08-27T01:09:34Z\",\n            \"level\": \"error\",\n            \"commit\": \"0e4107d\",\n            \"message\": \"Lorem elit officia enim eu\"\n        },\n        {\n            \"spanId\": \"span-7637\",\n            \"traceId\": \"abc-vwx-457\",\n            \"resourceId\": \"server-8200\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-4439\"\n            },\n            \"@timestamp\": \"2022-05-14T04:37:52Z\",\n            \"level\": \"info\",\n            \"commit\": \"9c7141c\",\n            \"message\": \"incididunt do irure tempor aliquip\"\n        },\n        {\n            \"spanId\": \"span-9673\",\n            \"traceId\": \"def-vwx-846\",\n            \"resourceId\": \"server-7430\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-5989\"\n            },\n            \"@timestamp\": \"2021-11-17T06:36:37Z\",\n            \"level\": \"info\",\n            \"commit\": \"6a6878e\",\n            \"message\": \"magna sunt labore dolor excepteur\"\n        },\n        {\n            \"spanId\": \"span-3134\",\n            \"traceId\": \"ghi-xyz-809\",\n            \"resourceId\": \"server-1459\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-5526\"\n            },\n            \"@timestamp\": \"2021-10-24T01:10:07Z\",\n            \"level\": \"warn\",\n            \"commit\": \"7d4215e\",\n            \"message\": \"occaecat magna anim commodo sunt\"\n        },\n        {\n            \"spanId\": \"span-6885\",\n            \"traceId\": \"abc-vwx-868\",\n            \"resourceId\": \"server-5901\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-4905\"\n            },\n            \"@timestamp\": \"2021-10-01T10:22:27Z\",\n            \"level\": \"error\",\n            \"commit\": \"0f9227f\",\n            \"message\": \"ut ad deserunt tempor minim\"\n        },\n        {\n            \"spanId\": \"span-5165\",\n            \"traceId\": \"ghi-stu-823\",\n            \"resourceId\": \"server-5564\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-7264\"\n            },\n            \"@timestamp\": \"2021-09-23T03:09:07Z\",\n            \"level\": \"info\",\n            \"commit\": \"0e9799a\",\n            \"message\": \"consequat sit aliqua ex nulla\"\n        },\n        {\n            \"spanId\": \"span-4411\",\n            \"traceId\": \"jkl-xyz-720\",\n            \"resourceId\": \"server-5011\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-4617\"\n            },\n            \"@timestamp\": \"2021-07-22T12:17:53Z\",\n            \"level\": \"info\",\n            \"commit\": \"0e1590a\",\n            \"message\": \"incididunt voluptate pariatur sint nisi\"\n        },\n        {\n            \"spanId\": \"span-6441\",\n            \"traceId\": \"ghi-vwx-367\",\n            \"resourceId\": \"server-7879\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-5158\"\n            },\n            \"@timestamp\": \"2020-06-27T03:52:20Z\",\n            \"level\": \"error\",\n            \"commit\": \"7b5668c\",\n            \"message\": \"id excepteur commodo tempor irure\"\n        },\n        {\n            \"spanId\": \"span-9765\",\n            \"traceId\": \"def-vwx-526\",\n            \"resourceId\": \"server-3843\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-6011\"\n            },\n            \"@timestamp\": \"2019-08-27T05:40:13Z\",\n            \"level\": \"info\",\n            \"commit\": \"3d6615b\",\n            \"message\": \"velit labore eu anim pariatur\"\n        },\n        {\n            \"spanId\": \"span-6189\",\n            \"traceId\": \"jkl-stu-276\",\n            \"resourceId\": \"server-6632\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-1587\"\n            },\n            \"@timestamp\": \"2019-06-08T04:01:53Z\",\n            \"level\": \"info\",\n            \"commit\": \"2a8022c\",\n            \"message\": \"nulla ad est laborum aliqua\"\n        },\n        {\n            \"spanId\": \"span-6772\",\n            \"traceId\": \"ghi-vwx-599\",\n            \"resourceId\": \"server-2213\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-5104\"\n            },\n            \"@timestamp\": \"2018-08-15T01:45:42Z\",\n            \"level\": \"error\",\n            \"commit\": \"6a4466e\",\n            \"message\": \"fugiat et voluptate in esse\"\n        },\n        {\n            \"spanId\": \"span-8394\",\n            \"traceId\": \"ghi-xyz-966\",\n            \"resourceId\": \"server-2010\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-9224\"\n            },\n            \"@timestamp\": \"2018-06-11T01:32:03Z\",\n            \"level\": \"info\",\n            \"commit\": \"9d7570b\",\n            \"message\": \"consequat laboris non commodo enim\"\n        },\n        {\n            \"spanId\": \"span-6805\",\n            \"traceId\": \"abc-pqr-211\",\n            \"resourceId\": \"server-6269\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-7832\"\n            },\n            \"@timestamp\": \"2017-09-28T03:09:17Z\",\n            \"level\": \"info\",\n            \"commit\": \"2d1097f\",\n            \"message\": \"nulla nostrud irure aliquip enim\"\n        },\n        {\n            \"spanId\": \"span-4942\",\n            \"traceId\": \"abc-vwx-463\",\n            \"resourceId\": \"server-5955\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-4204\"\n            },\n            \"@timestamp\": \"2017-05-14T07:30:44Z\",\n            \"level\": \"info\",\n            \"commit\": \"1c8568f\",\n            \"message\": \"aute excepteur laboris eiusmod laboris\"\n        },\n        {\n            \"spanId\": \"span-3201\",\n            \"traceId\": \"jkl-xyz-646\",\n            \"resourceId\": \"server-9171\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-2403\"\n            },\n            \"@timestamp\": \"2017-05-04T07:52:30Z\",\n            \"level\": \"info\",\n            \"commit\": \"5f5500e\",\n            \"message\": \"culpa duis laborum amet mollit\"\n        },\n        {\n            \"spanId\": \"span-9455\",\n            \"traceId\": \"def-vwx-429\",\n            \"resourceId\": \"server-8519\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-7034\"\n            },\n            \"@timestamp\": \"2015-03-30T06:47:41Z\",\n            \"level\": \"error\",\n            \"commit\": \"9d9238e\",\n            \"message\": \"magna adipisicing id ad nostrud\"\n        },\n        {\n            \"spanId\": \"span-3435\",\n            \"traceId\": \"ghi-pqr-864\",\n            \"resourceId\": \"server-3941\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-1311\"\n            },\n            \"@timestamp\": \"2015-01-07T12:49:09Z\",\n            \"level\": \"info\",\n            \"commit\": \"8b5472d\",\n            \"message\": \"dolor exercitation veniam culpa est\"\n        },\n        {\n            \"spanId\": \"span-6986\",\n            \"traceId\": \"ghi-pqr-232\",\n            \"resourceId\": \"server-4097\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-5932\"\n            },\n            \"@timestamp\": \"2014-07-02T09:14:26Z\",\n            \"level\": \"error\",\n            \"commit\": \"9d4349b\",\n            \"message\": \"cillum anim aliqua adipisicing proident\"\n        },\n        {\n            \"spanId\": \"span-1525\",\n            \"traceId\": \"jkl-stu-132\",\n            \"resourceId\": \"server-9424\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-2176\"\n            },\n            \"@timestamp\": \"2014-04-12T08:58:14Z\",\n            \"level\": \"warn\",\n            \"commit\": \"5f9075e\",\n            \"message\": \"excepteur mollit reprehenderit sunt Lorem\"\n        },\n        {\n            \"spanId\": \"span-3538\",\n            \"traceId\": \"ghi-pqr-129\",\n            \"resourceId\": \"server-7580\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-1744\"\n            },\n            \"@timestamp\": \"2014-01-19T01:23:20Z\",\n            \"level\": \"error\",\n            \"commit\": \"7a4471b\",\n            \"message\": \"et proident amet Lorem ex\"\n        }\n    ],\n    \"message\": \"Successfully retrieved recent logs\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Filter Logs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"spanId\": \"span-9455\",\n    \"traceId\": \"def-vwx-429\",\n    \"resourceId\": \"server-8519\",\n    \"parentResourceId\": \"server-7034\",\n    \"timestamp\": \"2015-03-30T06:47:41Z\",\n    \"level\": \"error\",\n    \"commit\": \"9d9238e\",\n    \"message\": \"magna adipisicing id ad nostrud\",\n    \"timeRange\": {\n        \"timestampGte\": \"2014-03-30T06:47:41Z\",\n        \"timestampLte\": \"2024-03-30T06:47:41Z\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/logs/filter",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"logs",
+								"filter"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Filter based on resourceId",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"resourceId\": \"server-7879\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/api/logs/filter",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"logs",
+										"filter"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "286"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"11e-q0JiY/HlfOcKmwh2QV45y9ifN8w\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 05:26:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"spanId\": \"span-6441\",\n            \"traceId\": \"ghi-vwx-367\",\n            \"resourceId\": \"server-7879\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-5158\"\n            },\n            \"@timestamp\": \"2020-06-27T03:52:20Z\",\n            \"level\": \"error\",\n            \"commit\": \"7b5668c\",\n            \"message\": \"id excepteur commodo tempor irure\"\n        }\n    ],\n    \"message\": \"Successfully filtered logs\"\n}"
+						},
+						{
+							"name": "Filter based on timestamp",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"timestamp\": \"2019-08-27T05:40:13\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/api/logs/filter",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"logs",
+										"filter"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "281"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"119-9sJQVfu971VW+uqUV3VnvIRHBmo\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 05:39:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"spanId\": \"span-9765\",\n            \"traceId\": \"def-vwx-526\",\n            \"resourceId\": \"server-3843\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-6011\"\n            },\n            \"@timestamp\": \"2019-08-27T05:40:13Z\",\n            \"level\": \"info\",\n            \"commit\": \"3d6615b\",\n            \"message\": \"velit labore eu anim pariatur\"\n        }\n    ],\n    \"message\": \"Successfully filtered logs\"\n}"
+						},
+						{
+							"name": "Filter based on level",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"level\": \"error\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/api/logs/filter",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"logs",
+										"filter"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"861-dR8wdyHzJq10Rjl6t79qUZ+tKpM\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 05:40:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"spanId\": \"span-6885\",\n            \"traceId\": \"abc-vwx-868\",\n            \"resourceId\": \"server-5901\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-4905\"\n            },\n            \"@timestamp\": \"2021-10-01T10:22:27Z\",\n            \"level\": \"error\",\n            \"commit\": \"0f9227f\",\n            \"message\": \"ut ad deserunt tempor minim\"\n        },\n        {\n            \"spanId\": \"span-3538\",\n            \"traceId\": \"ghi-pqr-129\",\n            \"resourceId\": \"server-7580\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-1744\"\n            },\n            \"@timestamp\": \"2014-01-19T01:23:20Z\",\n            \"level\": \"error\",\n            \"commit\": \"7a4471b\",\n            \"message\": \"et proident amet Lorem ex\"\n        },\n        {\n            \"spanId\": \"span-6986\",\n            \"traceId\": \"ghi-pqr-232\",\n            \"resourceId\": \"server-4097\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-5932\"\n            },\n            \"@timestamp\": \"2014-07-02T09:14:26Z\",\n            \"level\": \"error\",\n            \"commit\": \"9d4349b\",\n            \"message\": \"cillum anim aliqua adipisicing proident\"\n        },\n        {\n            \"spanId\": \"span-6441\",\n            \"traceId\": \"ghi-vwx-367\",\n            \"resourceId\": \"server-7879\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-5158\"\n            },\n            \"@timestamp\": \"2020-06-27T03:52:20Z\",\n            \"level\": \"error\",\n            \"commit\": \"7b5668c\",\n            \"message\": \"id excepteur commodo tempor irure\"\n        },\n        {\n            \"traceId\": \"abc-xyz-123\",\n            \"spanId\": \"span-456\",\n            \"resourceId\": \"server-1234\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-0987\"\n            },\n            \"@timestamp\": \"2023-09-15T08:00:00Z\",\n            \"level\": \"error\",\n            \"commit\": \"5e5342f\",\n            \"message\": \"Failed to connect to DB\"\n        },\n        {\n            \"spanId\": \"span-9455\",\n            \"traceId\": \"def-vwx-429\",\n            \"resourceId\": \"server-8519\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-7034\"\n            },\n            \"@timestamp\": \"2015-03-30T06:47:41Z\",\n            \"level\": \"error\",\n            \"commit\": \"9d9238e\",\n            \"message\": \"magna adipisicing id ad nostrud\"\n        },\n        {\n            \"spanId\": \"span-1611\",\n            \"traceId\": \"jkl-xyz-783\",\n            \"resourceId\": \"server-6932\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-4287\"\n            },\n            \"@timestamp\": \"2023-06-17T09:39:05Z\",\n            \"level\": \"error\",\n            \"commit\": \"1b4924d\",\n            \"message\": \"sint Lorem mollit veniam dolor\"\n        },\n        {\n            \"spanId\": \"span-6772\",\n            \"traceId\": \"ghi-vwx-599\",\n            \"resourceId\": \"server-2213\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-5104\"\n            },\n            \"@timestamp\": \"2018-08-15T01:45:42Z\",\n            \"level\": \"error\",\n            \"commit\": \"6a4466e\",\n            \"message\": \"fugiat et voluptate in esse\"\n        },\n        {\n            \"spanId\": \"span-4971\",\n            \"traceId\": \"def-xyz-661\",\n            \"resourceId\": \"server-8061\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-3904\"\n            },\n            \"@timestamp\": \"2022-08-27T01:09:34Z\",\n            \"level\": \"error\",\n            \"commit\": \"0e4107d\",\n            \"message\": \"Lorem elit officia enim eu\"\n        }\n    ],\n    \"message\": \"Successfully filtered logs\"\n}"
+						},
+						{
+							"name": "Filter based on parent resource id",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"parentResourceId\": \"server-0987\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/api/logs/filter",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"logs",
+										"filter"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "723"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d3-VRn8PDF9kF1d5LhmgDTuoyE0bdg\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 05:53:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"traceId\": \"abc-xyz-456\",\n            \"spanId\": \"span-456\",\n            \"resourceId\": \"server-1234\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-0987\"\n            },\n            \"@timestamp\": \"2023-09-15T08:00:00Z\",\n            \"level\": \"error\",\n            \"commit\": \"5e5332f\",\n            \"message\": \"Failed to connect to DB\"\n        },\n        {\n            \"traceId\": \"abc-xyz-123\",\n            \"spanId\": \"span-456\",\n            \"resourceId\": \"server-1234\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-0987\"\n            },\n            \"@timestamp\": \"2023-09-15T08:00:00Z\",\n            \"level\": \"error\",\n            \"commit\": \"5e5342f\",\n            \"message\": \"Error connect to DB\"\n        },\n        {\n            \"traceId\": \"abc-xyz-123\",\n            \"spanId\": \"span-456\",\n            \"resourceId\": \"server-1234\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-0987\"\n            },\n            \"@timestamp\": \"2023-09-15T08:00:00Z\",\n            \"level\": \"error\",\n            \"commit\": \"5e5342f\",\n            \"message\": \"Failed to connect to DB\"\n        }\n    ],\n    \"message\": \"Successfully filtered logs\"\n}"
+						},
+						{
+							"name": "Filter based on traceId",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"traceId\": \"def-vwx-846\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/api/logs/filter",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"logs",
+										"filter"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "285"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"11d-XxEeMIIoBu9fNa8PVqIwS7nd+4M\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 05:55:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"spanId\": \"span-9673\",\n            \"traceId\": \"def-vwx-846\",\n            \"resourceId\": \"server-7430\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-5989\"\n            },\n            \"@timestamp\": \"2021-11-17T06:36:37Z\",\n            \"level\": \"info\",\n            \"commit\": \"6a6878e\",\n            \"message\": \"magna sunt labore dolor excepteur\"\n        }\n    ],\n    \"message\": \"Successfully filtered logs\"\n}"
+						},
+						{
+							"name": "Filter based on span id",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"spanId\": \"span-9673\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/api/logs/filter",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"logs",
+										"filter"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "285"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"11d-XxEeMIIoBu9fNa8PVqIwS7nd+4M\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 05:55:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"spanId\": \"span-9673\",\n            \"traceId\": \"def-vwx-846\",\n            \"resourceId\": \"server-7430\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-5989\"\n            },\n            \"@timestamp\": \"2021-11-17T06:36:37Z\",\n            \"level\": \"info\",\n            \"commit\": \"6a6878e\",\n            \"message\": \"magna sunt labore dolor excepteur\"\n        }\n    ],\n    \"message\": \"Successfully filtered logs\"\n}"
+						},
+						{
+							"name": "Filter based on message",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"message\":\"lorem\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/api/logs/filter",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"logs",
+										"filter"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "986"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3da-zroCq2GLo+QqICNd2mQTItfhBtc\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 05:56:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"spanId\": \"span-3538\",\n            \"traceId\": \"ghi-pqr-129\",\n            \"resourceId\": \"server-7580\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-1744\"\n            },\n            \"@timestamp\": \"2014-01-19T01:23:20Z\",\n            \"level\": \"error\",\n            \"commit\": \"7a4471b\",\n            \"message\": \"et proident amet Lorem ex\"\n        },\n        {\n            \"spanId\": \"span-1525\",\n            \"traceId\": \"jkl-stu-132\",\n            \"resourceId\": \"server-9424\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-2176\"\n            },\n            \"@timestamp\": \"2014-04-12T08:58:14Z\",\n            \"level\": \"warn\",\n            \"commit\": \"5f9075e\",\n            \"message\": \"excepteur mollit reprehenderit sunt Lorem\"\n        },\n        {\n            \"spanId\": \"span-1611\",\n            \"traceId\": \"jkl-xyz-783\",\n            \"resourceId\": \"server-6932\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-4287\"\n            },\n            \"@timestamp\": \"2023-06-17T09:39:05Z\",\n            \"level\": \"error\",\n            \"commit\": \"1b4924d\",\n            \"message\": \"sint Lorem mollit veniam dolor\"\n        },\n        {\n            \"spanId\": \"span-4971\",\n            \"traceId\": \"def-xyz-661\",\n            \"resourceId\": \"server-8061\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-3904\"\n            },\n            \"@timestamp\": \"2022-08-27T01:09:34Z\",\n            \"level\": \"error\",\n            \"commit\": \"0e4107d\",\n            \"message\": \"Lorem elit officia enim eu\"\n        }\n    ],\n    \"message\": \"Successfully filtered logs\"\n}"
+						},
+						{
+							"name": "FIlter based on commit",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"commit\": \"7a4471b\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/api/logs/filter",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"logs",
+										"filter"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "278"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"116-vue95p+UZ80CN3NyuVyWT8SVpPw\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 05:56:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"spanId\": \"span-3538\",\n            \"traceId\": \"ghi-pqr-129\",\n            \"resourceId\": \"server-7580\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-1744\"\n            },\n            \"@timestamp\": \"2014-01-19T01:23:20Z\",\n            \"level\": \"error\",\n            \"commit\": \"7a4471b\",\n            \"message\": \"et proident amet Lorem ex\"\n        }\n    ],\n    \"message\": \"Successfully filtered logs\"\n}"
+						},
+						{
+							"name": "Multiple filters",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"level\": \"error\",\n    \"resourceId\": \"server-1234\",\n    \"message\": \"failed\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/api/logs/filter",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"logs",
+										"filter"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "501"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f5-LC6+IUq5pWoBFtJGOIFSNZVnI58\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 05:46:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"traceId\": \"abc-xyz-456\",\n            \"spanId\": \"span-456\",\n            \"resourceId\": \"server-1234\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-0987\"\n            },\n            \"@timestamp\": \"2023-09-15T08:00:00Z\",\n            \"level\": \"error\",\n            \"commit\": \"5e5332f\",\n            \"message\": \"Failed to connect to DB\"\n        },\n        {\n            \"traceId\": \"abc-xyz-123\",\n            \"spanId\": \"span-456\",\n            \"resourceId\": \"server-1234\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-0987\"\n            },\n            \"@timestamp\": \"2023-09-15T08:00:00Z\",\n            \"level\": \"error\",\n            \"commit\": \"5e5342f\",\n            \"message\": \"Failed to connect to DB\"\n        }\n    ],\n    \"message\": \"Successfully filtered logs\"\n}"
+						},
+						{
+							"name": "Greater than timestamp",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"timeRange\" : {\n        \"timestampGte\": \"2014-01-19T01:23:20Z\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/api/logs/filter",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"logs",
+										"filter"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"955-Xeyc1ZJUvokPi9nVw/dKHz48Yj8\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 05:58:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"spanId\": \"span-6772\",\n            \"traceId\": \"ghi-vwx-599\",\n            \"resourceId\": \"server-2213\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-5104\"\n            },\n            \"@timestamp\": \"2018-08-15T01:45:42Z\",\n            \"level\": \"error\",\n            \"commit\": \"6a4466e\",\n            \"message\": \"fugiat et voluptate in esse\"\n        },\n        {\n            \"spanId\": \"span-4971\",\n            \"traceId\": \"def-xyz-661\",\n            \"resourceId\": \"server-8061\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-3904\"\n            },\n            \"@timestamp\": \"2022-08-27T01:09:34Z\",\n            \"level\": \"error\",\n            \"commit\": \"0e4107d\",\n            \"message\": \"Lorem elit officia enim eu\"\n        },\n        {\n            \"spanId\": \"span-3134\",\n            \"traceId\": \"ghi-xyz-809\",\n            \"resourceId\": \"server-1459\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-5526\"\n            },\n            \"@timestamp\": \"2021-10-24T01:10:07Z\",\n            \"level\": \"warn\",\n            \"commit\": \"7d4215e\",\n            \"message\": \"occaecat magna anim commodo sunt\"\n        },\n        {\n            \"spanId\": \"span-6885\",\n            \"traceId\": \"abc-vwx-868\",\n            \"resourceId\": \"server-5901\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-4905\"\n            },\n            \"@timestamp\": \"2021-10-01T10:22:27Z\",\n            \"level\": \"error\",\n            \"commit\": \"0f9227f\",\n            \"message\": \"ut ad deserunt tempor minim\"\n        },\n        {\n            \"spanId\": \"span-4411\",\n            \"traceId\": \"jkl-xyz-720\",\n            \"resourceId\": \"server-5011\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-4617\"\n            },\n            \"@timestamp\": \"2021-07-22T12:17:53Z\",\n            \"level\": \"info\",\n            \"commit\": \"0e1590a\",\n            \"message\": \"incididunt voluptate pariatur sint nisi\"\n        },\n        {\n            \"traceId\": \"abc-xyz-456\",\n            \"spanId\": \"span-456\",\n            \"resourceId\": \"server-1234\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-0987\"\n            },\n            \"@timestamp\": \"2023-09-15T08:00:00Z\",\n            \"level\": \"error\",\n            \"commit\": \"5e5332f\",\n            \"message\": \"Failed to connect to DB\"\n        },\n        {\n            \"spanId\": \"span-3538\",\n            \"traceId\": \"ghi-pqr-129\",\n            \"resourceId\": \"server-7580\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-1744\"\n            },\n            \"@timestamp\": \"2014-01-19T01:23:20Z\",\n            \"level\": \"error\",\n            \"commit\": \"7a4471b\",\n            \"message\": \"et proident amet Lorem ex\"\n        },\n        {\n            \"spanId\": \"span-6986\",\n            \"traceId\": \"ghi-pqr-232\",\n            \"resourceId\": \"server-4097\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-5932\"\n            },\n            \"@timestamp\": \"2014-07-02T09:14:26Z\",\n            \"level\": \"error\",\n            \"commit\": \"9d4349b\",\n            \"message\": \"cillum anim aliqua adipisicing proident\"\n        },\n        {\n            \"spanId\": \"span-3435\",\n            \"traceId\": \"ghi-pqr-864\",\n            \"resourceId\": \"server-3941\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-1311\"\n            },\n            \"@timestamp\": \"2015-01-07T12:49:09Z\",\n            \"level\": \"info\",\n            \"commit\": \"8b5472d\",\n            \"message\": \"dolor exercitation veniam culpa est\"\n        },\n        {\n            \"spanId\": \"span-6805\",\n            \"traceId\": \"abc-pqr-211\",\n            \"resourceId\": \"server-6269\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-7832\"\n            },\n            \"@timestamp\": \"2017-09-28T03:09:17Z\",\n            \"level\": \"info\",\n            \"commit\": \"2d1097f\",\n            \"message\": \"nulla nostrud irure aliquip enim\"\n        }\n    ],\n    \"message\": \"Successfully filtered logs\"\n}"
+						},
+						{
+							"name": "Time range between",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"timeRange\" : {\n        \"timestampGte\": \"2014-01-19T01:23:20Z\",\n        \"timestampLte\": \"2014-07-02T09:14:26Z\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/api/logs/filter",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"logs",
+										"filter"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "765"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2fd-lLrAqgBARasQLUmg/RDBy/T+nGg\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 05:59:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"spanId\": \"span-3538\",\n            \"traceId\": \"ghi-pqr-129\",\n            \"resourceId\": \"server-7580\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-1744\"\n            },\n            \"@timestamp\": \"2014-01-19T01:23:20Z\",\n            \"level\": \"error\",\n            \"commit\": \"7a4471b\",\n            \"message\": \"et proident amet Lorem ex\"\n        },\n        {\n            \"spanId\": \"span-6986\",\n            \"traceId\": \"ghi-pqr-232\",\n            \"resourceId\": \"server-4097\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-5932\"\n            },\n            \"@timestamp\": \"2014-07-02T09:14:26Z\",\n            \"level\": \"error\",\n            \"commit\": \"9d4349b\",\n            \"message\": \"cillum anim aliqua adipisicing proident\"\n        },\n        {\n            \"spanId\": \"span-1525\",\n            \"traceId\": \"jkl-stu-132\",\n            \"resourceId\": \"server-9424\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-2176\"\n            },\n            \"@timestamp\": \"2014-04-12T08:58:14Z\",\n            \"level\": \"warn\",\n            \"commit\": \"5f9075e\",\n            \"message\": \"excepteur mollit reprehenderit sunt Lorem\"\n        }\n    ],\n    \"message\": \"Successfully filtered logs\"\n}"
+						},
+						{
+							"name": "Less than timestamp",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"timeRange\" : {\n        \"timestampLte\": \"2017-07-02T09:14:26Z\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/api/logs/filter",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"logs",
+										"filter"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6b0-/w94d+VerkTLzL/yrI/MOLG1GFU\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 06:00:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"spanId\": \"span-3538\",\n            \"traceId\": \"ghi-pqr-129\",\n            \"resourceId\": \"server-7580\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-1744\"\n            },\n            \"@timestamp\": \"2014-01-19T01:23:20Z\",\n            \"level\": \"error\",\n            \"commit\": \"7a4471b\",\n            \"message\": \"et proident amet Lorem ex\"\n        },\n        {\n            \"spanId\": \"span-6986\",\n            \"traceId\": \"ghi-pqr-232\",\n            \"resourceId\": \"server-4097\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-5932\"\n            },\n            \"@timestamp\": \"2014-07-02T09:14:26Z\",\n            \"level\": \"error\",\n            \"commit\": \"9d4349b\",\n            \"message\": \"cillum anim aliqua adipisicing proident\"\n        },\n        {\n            \"spanId\": \"span-3435\",\n            \"traceId\": \"ghi-pqr-864\",\n            \"resourceId\": \"server-3941\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-1311\"\n            },\n            \"@timestamp\": \"2015-01-07T12:49:09Z\",\n            \"level\": \"info\",\n            \"commit\": \"8b5472d\",\n            \"message\": \"dolor exercitation veniam culpa est\"\n        },\n        {\n            \"spanId\": \"span-4942\",\n            \"traceId\": \"abc-vwx-463\",\n            \"resourceId\": \"server-5955\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-4204\"\n            },\n            \"@timestamp\": \"2017-05-14T07:30:44Z\",\n            \"level\": \"info\",\n            \"commit\": \"1c8568f\",\n            \"message\": \"aute excepteur laboris eiusmod laboris\"\n        },\n        {\n            \"spanId\": \"span-9455\",\n            \"traceId\": \"def-vwx-429\",\n            \"resourceId\": \"server-8519\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-7034\"\n            },\n            \"@timestamp\": \"2015-03-30T06:47:41Z\",\n            \"level\": \"error\",\n            \"commit\": \"9d9238e\",\n            \"message\": \"magna adipisicing id ad nostrud\"\n        },\n        {\n            \"spanId\": \"span-1525\",\n            \"traceId\": \"jkl-stu-132\",\n            \"resourceId\": \"server-9424\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-2176\"\n            },\n            \"@timestamp\": \"2014-04-12T08:58:14Z\",\n            \"level\": \"warn\",\n            \"commit\": \"5f9075e\",\n            \"message\": \"excepteur mollit reprehenderit sunt Lorem\"\n        },\n        {\n            \"spanId\": \"span-3201\",\n            \"traceId\": \"jkl-xyz-646\",\n            \"resourceId\": \"server-9171\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-2403\"\n            },\n            \"@timestamp\": \"2017-05-04T07:52:30Z\",\n            \"level\": \"info\",\n            \"commit\": \"5f5500e\",\n            \"message\": \"culpa duis laborum amet mollit\"\n        }\n    ],\n    \"message\": \"Successfully filtered logs\"\n}"
+						},
+						{
+							"name": "All filters",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"spanId\": \"span-9455\",\n    \"traceId\": \"def-vwx-429\",\n    \"resourceId\": \"server-8519\",\n    \"parentResourceId\": \"server-7034\",\n    \"timestamp\": \"2015-03-30T06:47:41Z\",\n    \"level\": \"error\",\n    \"commit\": \"9d9238e\",\n    \"message\": \"magna adipisicing id ad nostrud\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/api/logs/filter",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"logs",
+										"filter"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "284"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"11c-XViQPuCYb2q6k1xSA95C5tfTL2I\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 06:01:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"spanId\": \"span-9455\",\n            \"traceId\": \"def-vwx-429\",\n            \"resourceId\": \"server-8519\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-7034\"\n            },\n            \"@timestamp\": \"2015-03-30T06:47:41Z\",\n            \"level\": \"error\",\n            \"commit\": \"9d9238e\",\n            \"message\": \"magna adipisicing id ad nostrud\"\n        }\n    ],\n    \"message\": \"Successfully filtered logs\"\n}"
+						},
+						{
+							"name": "Multiple filters with time range",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"level\": \"error\",\n    \"timeRange\": {\n        \"timestampGte\": \"2014-03-30T06:47:41Z\",\n        \"timestampLte\": \"2024-03-30T06:47:41Z\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/api/logs/filter",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"api",
+										"logs",
+										"filter"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"93c-IVN6lkbGDP0ePfmx31bBs/M1zvQ\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Nov 2023 06:04:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"traceId\": \"abc-xyz-123\",\n            \"spanId\": \"span-456\",\n            \"resourceId\": \"server-1234\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-0987\"\n            },\n            \"@timestamp\": \"2023-09-15T08:00:00Z\",\n            \"level\": \"error\",\n            \"commit\": \"5e5342f\",\n            \"message\": \"Error connect to DB\"\n        },\n        {\n            \"spanId\": \"span-6885\",\n            \"traceId\": \"abc-vwx-868\",\n            \"resourceId\": \"server-5901\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-4905\"\n            },\n            \"@timestamp\": \"2021-10-01T10:22:27Z\",\n            \"level\": \"error\",\n            \"commit\": \"0f9227f\",\n            \"message\": \"ut ad deserunt tempor minim\"\n        },\n        {\n            \"traceId\": \"abc-xyz-456\",\n            \"spanId\": \"span-456\",\n            \"resourceId\": \"server-1234\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-0987\"\n            },\n            \"@timestamp\": \"2023-09-15T08:00:00Z\",\n            \"level\": \"error\",\n            \"commit\": \"5e5332f\",\n            \"message\": \"Failed to connect to DB\"\n        },\n        {\n            \"spanId\": \"span-6986\",\n            \"traceId\": \"ghi-pqr-232\",\n            \"resourceId\": \"server-4097\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-5932\"\n            },\n            \"@timestamp\": \"2014-07-02T09:14:26Z\",\n            \"level\": \"error\",\n            \"commit\": \"9d4349b\",\n            \"message\": \"cillum anim aliqua adipisicing proident\"\n        },\n        {\n            \"spanId\": \"span-6441\",\n            \"traceId\": \"ghi-vwx-367\",\n            \"resourceId\": \"server-7879\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-5158\"\n            },\n            \"@timestamp\": \"2020-06-27T03:52:20Z\",\n            \"level\": \"error\",\n            \"commit\": \"7b5668c\",\n            \"message\": \"id excepteur commodo tempor irure\"\n        },\n        {\n            \"traceId\": \"abc-xyz-123\",\n            \"spanId\": \"span-456\",\n            \"resourceId\": \"server-1234\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-0987\"\n            },\n            \"@timestamp\": \"2023-09-15T08:00:00Z\",\n            \"level\": \"error\",\n            \"commit\": \"5e5342f\",\n            \"message\": \"Failed to connect to DB\"\n        },\n        {\n            \"spanId\": \"span-9455\",\n            \"traceId\": \"def-vwx-429\",\n            \"resourceId\": \"server-8519\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-7034\"\n            },\n            \"@timestamp\": \"2015-03-30T06:47:41Z\",\n            \"level\": \"error\",\n            \"commit\": \"9d9238e\",\n            \"message\": \"magna adipisicing id ad nostrud\"\n        },\n        {\n            \"spanId\": \"span-1611\",\n            \"traceId\": \"jkl-xyz-783\",\n            \"resourceId\": \"server-6932\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-4287\"\n            },\n            \"@timestamp\": \"2023-06-17T09:39:05Z\",\n            \"level\": \"error\",\n            \"commit\": \"1b4924d\",\n            \"message\": \"sint Lorem mollit veniam dolor\"\n        },\n        {\n            \"spanId\": \"span-6772\",\n            \"traceId\": \"ghi-vwx-599\",\n            \"resourceId\": \"server-2213\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-5104\"\n            },\n            \"@timestamp\": \"2018-08-15T01:45:42Z\",\n            \"level\": \"error\",\n            \"commit\": \"6a4466e\",\n            \"message\": \"fugiat et voluptate in esse\"\n        },\n        {\n            \"spanId\": \"span-4971\",\n            \"traceId\": \"def-xyz-661\",\n            \"resourceId\": \"server-8061\",\n            \"metadata\": {\n                \"parentResourceId\": \"server-3904\"\n            },\n            \"@timestamp\": \"2022-08-27T01:09:34Z\",\n            \"level\": \"error\",\n            \"commit\": \"0e4107d\",\n            \"message\": \"Lorem elit officia enim eu\"\n        }\n    ],\n    \"message\": \"Successfully filtered logs\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST",
+			"value": "localhost:3000",
+			"type": "string"
+		}
+	]
+}

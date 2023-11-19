@@ -14,9 +14,9 @@ class IngestService {
   public async ingestBulkData(logData: IngestLogDto[]) {
     const ingestData = await db.helpers.bulk({
       datasource: logData,
-      onDocument() {
+      onDocument(doc) {
         return {
-          index: {
+          create: {
             _index: LOG_ALIAS,
           },
         };

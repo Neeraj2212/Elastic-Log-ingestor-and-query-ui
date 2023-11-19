@@ -1,29 +1,29 @@
 version: "2.2"
 
 services:
-  ingestor_server:
-    build:
-      context: ./server
-      target: development-build-stage
-      dockerfile: Dockerfile
-    container_name: ingestor_server
-    ports:
-      - "3000:3000"
-    environment:
-      - ELASTIC_URL=http://es01:9200
-      - ELASTIC_USERNAME=elastic
-      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
-      - PORT=3000
-      - LOG_FORMAT=tiny
-    volumes:
-      - ./server:/app
-      - /app/node_modules
-    restart: "unless-stopped"
-    depends_on:
-      es_service_1:
-        condition: service_healthy
-    networks:
-      - elastic_network
+  # ingestor_server:
+  #   build:
+  #     context: ./server
+  #     target: development-build-stage
+  #     dockerfile: Dockerfile
+  #   container_name: ingestor_server
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - ELASTIC_URL=http://es01:9200
+  #     - ELASTIC_USERNAME=elastic
+  #     - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+  #     - PORT=3000
+  #     - LOG_FORMAT=tiny
+  #   volumes:
+  #     - ./server:/app
+  #     - /app/node_modules
+  #   restart: "unless-stopped"
+  #   depends_on:
+  #     es_service_1:
+  #       condition: service_healthy
+  #   networks:
+  #     - elastic_network
 
   es_service_1:
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}

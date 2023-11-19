@@ -15,7 +15,7 @@ class QueryRoute implements Routes {
 
   private initializeRoutes() {
     this.router.get(`${this.path}`, this.queryController.getRecentLogs);
-    this.router.get(`${this.path}/filter`, validationMiddleware(QueryLogDto, 'body'), this.queryController.filterLogs);
+    this.router.post(`${this.path}/filter`, validationMiddleware(QueryLogDto, 'body', false, true), this.queryController.filterLogs);
   }
 }
 

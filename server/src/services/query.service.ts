@@ -6,19 +6,17 @@ class QueryService {
   public async getRecentLogs() {
     const recentLogs = await db.search({
       index: LOG_ALIAS,
-      body: {
-        size: 100,
-        sort: [
-          {
-            timestamp: {
-              order: 'desc',
-            },
+      size: 100,
+      sort: [
+        {
+          '@timestamp': {
+            order: 'desc',
           },
-        ],
-      },
+        },
+      ],
     });
 
-    return recentLogs;
+    return recentLogs.hits.hits.map((log: any) => log._source);
   }
 
   public async filterLogs(filterQuery: QueryLogDto) {
@@ -29,26 +27,39 @@ class QueryService {
     if (filterQuery.traceId) must.push(this.singleMatchQuery('traceId', filterQuery.traceId));
     if (filterQuery.spanId) must.push(this.singleMatchQuery('spanId', filterQuery.spanId));
     if (filterQuery.commit) must.push(this.singleMatchQuery('commit', filterQuery.commit));
-    if (filterQuery.parentResourceId) must.push(this.singleMatchQuery('parentResourceId', filterQuery.parentResourceId));
-    if (filterQuery.timeRange.timestampGte || filterQuery.timeRange.timestampLte) {
-      must.push(this.rangeQuery('timestamp', filterQuery.timeRange.timestampGte, filterQuery.timeRange.timestampLte));
+    if (filterQuery.timestamp) must.push(this.singleMatchQuery('@timestamp', filterQuery.timestamp));
+    if (filterQuery.parentResourceId) must.push(this.nestedMatchQuery('metadata', 'metadata.parentResourceId', filterQuery.parentResourceId));
+    if (filterQuery.timeRange && (filterQuery.timeRange.timestampGte || filterQuery.timeRange.timestampLte)) {
+      must.push(this.rangeQuery('@timestamp', filterQuery.timeRange.timestampGte, filterQuery.timeRange.timestampLte));
     }
+    if (must.length === 0) return [];
     const query = must.length === 1 ? must[0] : this.boolQuery(must);
 
     const filteredLogs = await db.search({
       index: LOG_ALIAS,
-      body: {
-        query: query,
-      },
+      query,
     });
 
-    return filteredLogs;
+    return filteredLogs.hits.hits.map((log: any) => log._source);
   }
 
   private singleMatchQuery(field: string, value: string) {
     return {
       match: {
         [field]: value,
+      },
+    };
+  }
+
+  private nestedMatchQuery(nestingField: string, field: string, value: string) {
+    return {
+      nested: {
+        path: nestingField,
+        query: {
+          match: {
+            [field]: value,
+          },
+        },
       },
     };
   }

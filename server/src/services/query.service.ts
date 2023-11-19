@@ -4,19 +4,24 @@ import { QueryLogDto } from '@/dtos/query.dto';
 
 class QueryService {
   public async getRecentLogs() {
-    const recentLogs = await db.search({
-      index: LOG_ALIAS,
-      size: 100,
-      sort: [
-        {
-          '@timestamp': {
-            order: 'desc',
+    try {
+      const recentLogs = await db.search({
+        index: LOG_ALIAS,
+        size: 100,
+        sort: [
+          {
+            '@timestamp': {
+              order: 'desc',
+            },
           },
-        },
-      ],
-    });
+        ],
+      });
 
-    return recentLogs.hits.hits.map((log: any) => log._source);
+      return recentLogs.hits.hits.map((log: any) => log._source);
+    } catch (error) {
+      if (error.statusCode === 404) return [];
+      throw error;
+    }
   }
 
   public async filterLogs(filterQuery: QueryLogDto) {
@@ -35,19 +40,23 @@ class QueryService {
     if (must.length === 0) return this.getRecentLogs();
     const query = must.length === 1 ? must[0] : this.boolQuery(must);
 
-    const filteredLogs = await db.search({
-      index: LOG_ALIAS,
-      query,
-      sort: [
-        {
-          '@timestamp': {
-            order: 'desc',
+    try {
+      const filteredLogs = await db.search({
+        index: LOG_ALIAS,
+        query,
+        sort: [
+          {
+            '@timestamp': {
+              order: 'desc',
+            },
           },
-        },
-      ],
-    });
+        ],
+      });
 
-    return filteredLogs.hits.hits.map((log: any) => log._source);
+      return filteredLogs.hits.hits.map((log: any) => log._source);
+    } catch (error) {
+      if (error.statusCode === 404) return [];
+    }
   }
 
   private singleMatchQuery(field: string, value: string) {

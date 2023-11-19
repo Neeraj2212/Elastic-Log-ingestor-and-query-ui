@@ -124,7 +124,8 @@ export const setupLogIndexTemplate = async () => {
         },
       },
     });
-    console.log(`${LOG_TEMPLATE_NAME} created!`);
+
+    console.log(`${LOG_TEMPLATE_NAME} created! `);
   }
 };
 

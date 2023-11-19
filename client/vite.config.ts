@@ -14,7 +14,10 @@ export default defineConfig({
     host: true,
     port: 5000,
     proxy: {
-      "/api": "http://ingestor_server:3000",
+      "/api":
+        process.env?.ENV === "production"
+          ? "http://ingestor_server_prod:3000"
+          : "http://ingestor_server:3000",
     },
   },
 });

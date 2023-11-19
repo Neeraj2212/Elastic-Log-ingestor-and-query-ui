@@ -29,10 +29,11 @@ This project aims to develop a robust Log Ingestor and Query Interface system ca
 Check the postman collection for API documentation [here](https://documenter.getpostman.com/view/16239037/2s9Ye8faZF)
 
 To run the postman collection, download the collection from [here](./postman_collection.json) and import it in postman.
+
+### System Design Document
+Check the system design document [here](./SYSTEM_DESIGN.md)
+
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
